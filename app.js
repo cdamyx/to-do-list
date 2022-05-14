@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 mongoose.connect(uri, {
-  
+
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
