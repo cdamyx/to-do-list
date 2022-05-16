@@ -27,6 +27,12 @@ const itemsSchema = {
 
 const Item = mongoose.model("Item", itemsSchema);
 
+let completedList = ["one", "two", "three"];
+
+// {id: 1, name: "one"},
+//   {id: 2, name: "two"},
+//   {id: 3, name: "three"}
+
 
 app.get("/", (req, res) => {
 
@@ -66,6 +72,24 @@ app.post("/delete", (req, res) => {
 
 app.get("/about", function(req, res){
   res.render("about");
+});
+
+app.get("/completed", function(req, res){
+  res.render("completed", {listTitle: "Completed", newListItems: completedList});
+});
+
+app.post("/completed", (req, res) => {
+  const checkedItemId = req.body.checkbox;
+  // console.log(checkedItemId.innerText);
+  // completedList.push(checkedItemId.innerText)
+
+  Item.findOne({_id : checkedItemId}, (err, docs) => {
+    if(!err) {
+      completedList.push(docs.name);
+      // Item.deleteOne(checkedItemId);
+      res.redirect("/");
+    }
+  })
 });
 
 let port = process.env.PORT;

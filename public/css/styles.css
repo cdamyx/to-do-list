@@ -7,15 +7,6 @@ html {
   height: 100vh;
 }
 
-h1 {
-  color: #fff;
-  padding: 10px;
-}
-
-body {
-  
-}
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -26,6 +17,11 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+
+h1 {
+  color: #fff;
+  padding: 10px;
 }
 
 .box {
@@ -75,7 +71,7 @@ form.item {
 }
 
 button {
-  min-height: 50px;
+  height: 50px;
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
@@ -108,7 +104,18 @@ input[type="text"]:focus {
 }
 
 footer {
-  color: white;
-  color: rgba(0, 0, 0, 1);
+  color: grey;
+  font-size: .75rem;
   text-align: center;
+  padding: .25rem 0 .25rem 0;
+}
+
+@media screen and (max-width: 405px) {
+  .box {
+    max-width: 300px;
+  }
+
+  input[type="text"] {
+    width: 200px;
+  }
 }
