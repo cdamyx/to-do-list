@@ -27,7 +27,7 @@ const itemsSchema = {
 
 const Item = mongoose.model("Item", itemsSchema);
 
-let completedList = ["one", "two", "three"];
+let completedList = [];
 
 // {id: 1, name: "one"},
 //   {id: 2, name: "two"},
@@ -80,14 +80,24 @@ app.get("/completed", function(req, res){
 
 app.post("/completed", (req, res) => {
   const checkedItemId = req.body.checkbox;
-  // console.log(checkedItemId.innerText);
-  // completedList.push(checkedItemId.innerText)
 
-  Item.findOne({_id : checkedItemId}, (err, docs) => {
+  Item.findOne({_id : checkedItemId}, async (err, docs) => {
+
     if(!err) {
-      completedList.push(docs.name);
-      // Item.deleteOne(checkedItemId);
+      completedList.length > 24? completedList.unshift(docs.name) && completedList.pop() : completedList.unshift(docs.name);
+      
+      await Item.findByIdAndRemove(checkedItemId, (err) => {
+        if(!err) {
+          console.log("Completed item removed from DB");
+        } else {
+          console.log("Error deleting completed item from DB: ", err);
+        }
+      });
+
       res.redirect("/");
+
+    } else {
+      console.log("Error finding item in DB: ", err);
     }
   })
 });
