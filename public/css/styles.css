@@ -24,6 +24,11 @@ h1 {
   padding: 10px;
 }
 
+a {
+  color: #000;
+  font-size: 1.2rem;
+}
+
 .box {
   max-width: 400px;
   margin: 50px auto;
@@ -32,9 +37,29 @@ h1 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.navLink {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #dbeafc;
+  border-radius: 5px 5px 0 0;
+}
+
 #heading {
   background-color: #040557;
   text-align: center;
+}
+
+#back {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+#contact {
+  color: grey;
 }
 
 .item {

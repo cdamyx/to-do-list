@@ -5,6 +5,10 @@
   </div>
 
   <div class="box">
+    <div class="navLink">
+      <a href="/completed">View completed items</a>
+    </div>
+
     <% newListItems.forEach((item) => { %>
       <form action="/completed" method="post">
         <div class="item">
@@ -29,6 +33,7 @@
       <input type="text" name="newItem" placeholder="Add New Item" aria-placeholder="Add New Item" aria-label="Add New Item" autocomplete="off">
       <button type="submit" name="list" value="<%= listTitle %>">+</button>
     </form>
+
   </div>
 
 <%- include("footer") -%>

@@ -5,11 +5,18 @@
   </div>
 
   <div class="box">
+    <div class="navLink" id="back">
+      <a href="/">Back</a>
+    </div>
     <% newListItems.forEach((item) => { %>
         <div class="item">
-          <p><%=  item  %></p>
+          <p class="strike"><%=  item  %></p>
         </div>
     <% }) %>
   </div>
+
+  <!--<div class="box" id="back">
+    <a href="/">Back</a>
+  </div>-->
 
 <%- include("footer") -%>
