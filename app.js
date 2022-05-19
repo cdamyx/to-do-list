@@ -60,9 +60,9 @@ app.post("/", async (req, res) => {
 
 app.post("/delete", (req, res) => {
   
-  const checkedItemId = req.body.checkbox;
+  const deleteItemId = req.body.delete;
 
-  Item.findByIdAndRemove(checkedItemId, (err) => {
+  Item.findByIdAndRemove(deleteItemId, (err) => {
     if(!err) {
       console.log("deleted");
       res.redirect("/");

@@ -1,7 +1,7 @@
 <%- include("header") -%>
 
   <div class="box" id="heading">
-    <h1> <%= listTitle %> </h1>
+    <h1> <%=listTitle%> </h1>
   </div>
 
   <div class="box">
@@ -10,24 +10,15 @@
     </div>
 
     <% newListItems.forEach((item) => { %>
-      <form action="/completed" method="post">
-        <div class="item">
-          <input type="checkbox" name="checkbox" value="<%=item._id%>" aria-label="Complete <%=item.name%>" onChange="this.form.submit()">
-          <p><%=  item.name  %></p>
-        </div>
-        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
-      </form>
-    <% }) %>
+      <form id="completeForm" action="/completed" method="post"></form>
+      <form id="deleteForm" action="/delete" method="post"></form>
 
-<!--    <% newListItems.forEach((item) => { %>
-      <form action="/delete" method="post">
-        <div class="item">
-          <input type="checkbox" name="checkbox" value="<%=item._id%>" aria-label="Complete <%=item.name%>" onChange="this.form.submit()">
-          <p><%=  item.name  %></p>
+        <div class="item deleteButtonContainer">
+          <input form="completeForm" type="checkbox" name="checkbox" value="<%=item._id%>" aria-label="Complete <%=item.name%>" onChange="this.form.submit()">
+          <p><%=item.name%></p>
+          <button class="deleteButton" form="deleteForm" name="delete" value="<%=item._id%>" aria-label="Delete <%=item.name%>">-</button>
         </div>
-        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
-      </form>
-    <% }) %> -->
+    <% }) %>
 
     <form class="item" action="/" method="post">
       <input type="text" name="newItem" placeholder="Add New Item" aria-placeholder="Add New Item" aria-label="Add New Item" autocomplete="off">

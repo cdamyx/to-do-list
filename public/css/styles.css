@@ -44,6 +44,18 @@ a {
   border-radius: 5px 5px 0 0;
 }
 
+.deleteButton {
+  display: none;
+}
+
+.deleteButtonContainer:hover .deleteButton {
+  display: inline-block;
+}
+
+/*.delete:hover {
+  display: inline-block;
+}*/
+
 #heading {
   background-color: #040557;
   text-align: center;
@@ -88,6 +100,7 @@ p {
   font-size: 20px;
   font-weight: 200;
   color: #00204a;
+  width: 243px;
 }
 
 form.item {
@@ -105,6 +118,7 @@ button {
   font-size: 30px;
   padding-bottom: 6px;
   border-width: 0;
+  cursor: pointer;
 }
 
 input[type="text"] {
@@ -142,5 +156,9 @@ footer {
 
   input[type="text"] {
     width: 200px;
+  }
+
+  p {
+    width: 130px;
   }
 }
