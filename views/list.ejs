@@ -9,10 +9,11 @@
       <a href="/completed">View completed items</a>
     </div>
 
-    <% newListItems.forEach((item) => { %>
-      <form id="completeForm" action="/completed" method="post"></form>
-      <form id="deleteForm" action="/delete" method="post"></form>
+    <!-- Nested forms not allowed, so needed forms with IDs that each input can reference -->
+    <form id="completeForm" action="/completed" method="post"></form>
+    <form id="deleteForm" action="/delete" method="post"></form>
 
+    <% newListItems.forEach((item) => { %>
         <div class="item deleteButtonContainer">
           <input form="completeForm" type="checkbox" name="checkbox" value="<%=item._id%>" aria-label="Complete <%=item.name%>" onChange="this.form.submit()">
           <p><%=item.name%></p>
@@ -22,7 +23,7 @@
 
     <form class="item" action="/" method="post">
       <input type="text" name="newItem" placeholder="Add New Item" aria-placeholder="Add New Item" aria-label="Add New Item" autocomplete="off">
-      <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      <button type="submit" name="list" value="<%=listTitle%>">+</button>
     </form>
 
   </div>
